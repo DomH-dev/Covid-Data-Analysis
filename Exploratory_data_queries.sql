@@ -18,7 +18,7 @@ Where
 order by
     3,
     4
-    
+
 
 Select
     Location,
@@ -231,3 +231,25 @@ From
 order by
     2,
     3
+
+-- Create view to store data for use in Tableau dashboard
+
+--Create View PercentPopulationVaccinated as
+Select
+    dea.continent,
+    dea.location,
+    dea.date,
+    dea.population,
+    vac.new_vaccinations,
+    SUM(CAST(vac.new_vaccinations as int)) OVER (
+        Partition by dea.location
+        Order by
+            dea.location,
+            dea.date
+    ) as RollingPeopleVaccinated
+From
+    PortfolioProject.dbo.CovidDeaths dea
+    Join PortfolioProject.dbo.CovidVaccinations vac On dea.location = vac.location
+    and dea.date = vac.date
+Where
+    dea.continent is not null
