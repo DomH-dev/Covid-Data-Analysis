@@ -234,7 +234,7 @@ order by
 
 -- Create view to store data for use in Tableau dashboard
 
---Create View PercentPopulationVaccinated as
+/* Create View PercentPopulationVaccinated as
 Select
     dea.continent,
     dea.location,
@@ -252,4 +252,29 @@ From
     Join PortfolioProject.dbo.CovidVaccinations vac On dea.location = vac.location
     and dea.date = vac.date
 Where
-    dea.continent is not null
+    dea.continent is not null */
+
+-- Creating view for the Global Numbers from dataset
+
+/* Create view GlobalNumbers as
+Select
+    SUM(new_cases) as total_cases,
+    SUM(CAST(new_deaths as int)) as total_deaths,
+    (SUM(CAST(new_deaths as int)) / SUM(New_Cases)) * 100 AS DeathPercentage
+From
+    PortfolioProject.dbo.CovidDeaths
+Where
+    continent is not null */
+
+-- Create view for continental death counts
+
+/* Create view ContinentalDeathCounts as
+Select
+    location as Continent,
+    MAX(CAST(total_deaths as int)) as TotalDeathCount
+From
+    PortfolioProject.dbo.CovidDeaths
+Where
+    location in ('Europe', 'North America', 'South America', 'Asia', 'Africa', 'Oceania')
+Group by
+    location */
