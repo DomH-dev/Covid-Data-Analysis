@@ -103,14 +103,14 @@ order by
 -- Showing Continents with the Highest Death Count per Population
 
 Select
-    continent,
+    location,
     MAX(CAST(total_deaths as int)) as TotalDeathCount
 From
     PortfolioProject.dbo.CovidDeaths
 Where
-    continent is not null
+    location in ('Europe', 'North America', 'South America', 'Asia', 'Africa', 'Oceania')
 Group by
-    continent
+    location
 order by
     TotalDeathCount desc
 
