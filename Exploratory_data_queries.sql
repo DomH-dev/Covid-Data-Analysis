@@ -276,5 +276,23 @@ FROM
     PortfolioProject.dbo.CovidDeaths
 WHERE
     location in ('Europe', 'North America', 'South America', 'Asia', 'Africa', 'Oceania')
+GROUP BY
+    location
+
+-- Creating view for the percent of the population that was infected
+
+CREATE view PercentPopulationInfected as
+SELECT
+    location,
+    population,
+    MAX(total_cases) as MaxInfectionCount,
+    MAX((total_cases / population)) * 100 AS PercentPopulationinfected
+FROM
+    PortfolioProject.dbo.CovidDeaths
+WHERE
+    continent is not null
 Group by
-    location */
+    location,
+    population
+ORDER BY
+    Percent_of_Population_infected desc
