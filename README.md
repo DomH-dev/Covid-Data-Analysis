@@ -14,6 +14,8 @@ The COVID-19 pandemic has generated an unprecedented amount of public health dat
 
 ### Global Statistics
 - Calculated total cases, deaths, and global death percentage
+    - 150,574,977 total cases by March 2021, ~2% of the world's population
+    - 3,180,206 deaths, ~2% of all cases resulted in death
 - Created views for efficient data visualization in Tableau
 - Tracked the progression of cases and deaths over time
 
@@ -24,8 +26,9 @@ The COVID-19 pandemic has generated an unprecedented amount of public health dat
 
 ### Regional Impact
 - Identified countries with highest infection rates relative to population
+    - Andorra, Montenegro and Cechia
 - Analysed continental death counts
-- Tracked infection patterns across different geographical regions
+    - Europe had the largest although likely due to better reporting on COVID statistics across member countries
 
 ### Technical Highlights
 - Utilized Common Table Expressions (CTEs) for complex calculations
@@ -38,16 +41,4 @@ The COVID-19 pandemic has generated an unprecedented amount of public health dat
 - Microsoft SQL Server
 - SQL
 - Tableau (for visualization)
-<!--- Tableau dashboard visuals to be added soon --->
-
-## Database Structure
-- CovidDeaths table: Contains mortality and infection data
-- CovidVaccinations table: Contains vaccination-related metrics
-
-## Views Created
-- PercentPopulationVaccinated
-- GlobalNumbers
-- ContinentalDeathCounts
-- PercentPopulationInfected
-
-This project serves as a valuable resource for understanding the pandemic's impact through data analysis and visualization.
+    - Dashboard available here at Tableau Public: https://public.tableau.com/views/CovidDashboard_17402598405350/Dashboard1
